@@ -1,0 +1,12 @@
+<div class="jumbotron"><h1>Questions</h1>
+</div>
+  <form action="/answers/add" method="POST">
+  <div class="questionnare">
+      <p>here is the list of courses available, answer with yes to those you interested in, no if you not and leave null if undecided</p>
+    {{# questions}}
+    {{question}} :<input type="text" name="answer">
+    {{/questions}}
+    <br>
+   <input type="submit"><br>
+  </div>
+</form>

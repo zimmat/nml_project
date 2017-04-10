@@ -1,0 +1,24 @@
+{
+  "name": "nml_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.15.2",
+    "handlebars": "^4.0.6",
+    "mysql": "^2.13.0",
+    "nodemailer": "^4.0.0",
+    "sweetalert": "^1.1.3"
+  }
+}

@@ -1,0 +1,19 @@
+<h2>Records</h2>
+<table class="table table-hover table-bordered results">
+  <thead>
+    <tr>
+      <th class="col-md-1 col-xs-1">Name</th>
+      <th class="col-md-3 col-xs-3">Question</th>
+      <th class="col-md-3 col-xs-3">Answer</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#records}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{question}}</td>
+      <td>{{answer}}</td>
+    </tr>
+      {{/records}}>
+  </tbody>
+</table>
