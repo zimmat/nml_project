@@ -1,12 +1,17 @@
 <div class="jumbotron">
     <h1>Login</h1>
+    <p id='warning'>{{messages.warning}}</p>
   </div>
 
 
 <div class="login">
-
+  {{#if msg}}
+      <div class="message">
+        {{msg}}
+      </div>
+    {{/if}}
   <form class="" action="/login" method="post">
-    <input type="text" name="username" value="{{username}}" placeholder="username">
+    <input type="text" name="name" value="{{name}}" placeholder="name">
     <input type="password" name= "password" value="{{password}}"placeholder="password" >
    <input type="submit"><br>
 

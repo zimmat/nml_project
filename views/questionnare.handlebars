@@ -7,3 +7,14 @@
    <input type="submit"><br>
      </div>
   </form>
+
+  <form action="/answers/add" method="POST">
+  <div class="questionnare">
+      <p>Would you like to go to any of the listed courses, answer with yes to those you interested in, no if you not and leave null if undecided</p>
+    {{# questions}}
+    <div>{{question}} :<input type="text" name="answer"></div>
+    {{/questions}}
+    <br>
+   <input type="submit"><br>
+  </div>
+</form>

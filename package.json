@@ -12,13 +12,17 @@
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "express-flash": "0.0.2",
+    "express-flash": "git://github.com/RGBboy/express-flash.git",
     "express-handlebars": "^3.0.0",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.15.2",
+    "flash": "^1.1.0",
     "handlebars": "^4.0.6",
     "mysql": "^2.13.0",
     "nodemailer": "^4.0.0",
+    "nodemailer-express-handlebars": "^2.0.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "path-exists": "^3.0.0",
     "sweetalert": "^1.1.3"
   }
 }
