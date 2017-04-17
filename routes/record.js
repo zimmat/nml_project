@@ -8,8 +8,8 @@ exports.showAllRecords = function(req, res, next) {
             res.render('record', {
               no_records : results.length === 0,
   					  records : results,
-              // user: req.session.employee,
-              // is_admin: req.session.employee.is_admin
+              employee: req.session.employee,
+              is_admin: req.session.employee.is_admin
         });
       });
     });

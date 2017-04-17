@@ -1,11 +1,11 @@
 function loggedOut(req, res, next){
-  if(req.session && req.session.user){
-    return res.redirect('/home');
+  if(req.session && req.session.employee){
+    return res.redirect('/questionnare');
   }
   return next();
 }
 function requiresLogin(req, res, next){
-  if(req.session && req.session.user){
+  if(req.session && req.session.employee){
     return next();
   }
   else {
@@ -15,7 +15,7 @@ function requiresLogin(req, res, next){
 }
 //If visitor is not Admin warn them
 function requiresLoginAsAdmin(req, res, next){
-  if(req.session.user.is_admin){
+  if(req.session.employee.is_admin){
     return next();
   }
   else {

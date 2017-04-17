@@ -16,14 +16,9 @@ exports.add = function(req, res, next) {
     if(req.body.password !== req.body.confirmPassword){
         res.redirect('/signup');
     }else{
-      var password = req.body.password;
-      bcrypt.hash(password, 10, function(err, hash) {
-      data.password = hash;
-
       connection.query('insert into employees set ?', data, function(err, results) {
         if (err) return next(err)
         res.redirect('/login');
-  });
 });
 };
 });
