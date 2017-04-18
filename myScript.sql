@@ -1,5 +1,6 @@
-CREATE USER user@localhost IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON nmldb* TO user@localhost;
+CREATE DATABASE nmldb;
+CREATE USER root@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON nmldb* TO root@localhost;
 FLUSH PRIVILEGES;
 
 use nmldb;
