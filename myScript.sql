@@ -1,3 +1,7 @@
+CREATE USER user@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON nmldb* TO user@localhost;
+FLUSH PRIVILEGES;
+
 use nmldb;
 drop table  if exists employees;
 drop table  if exists questionnare;

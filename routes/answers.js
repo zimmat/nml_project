@@ -25,17 +25,3 @@ exports.add = function(req, res, next) {
         });
     });
 }
-exports.update = function(req, res, next){
-
-	var data = {
-					question_id : req.body.question_id,
-	};
-  	var id = req.params.id;
-  	req.getConnection(function(err, connection){
-		if (err) return next(err);
-		connection.query('UPDATE answers SET ? WHERE question_id = ?', [data, id], function(err, rows){
-			if (err) return next(err);
-      		res.redirect('/home');
-		});
-    });
-};

@@ -61,15 +61,21 @@ app.get("/login", middleware.loggedOut, function(req, res) {
     showNavBar: false
   });
 });
-app.get('/',function(req,res){
-res.sendfile('index.html');
-});
 var checkUser = function(req, res, next) {
-  if (req.session.user) {
+  if (req.session.employee) {
     return next();
   }
   res.redirect("/login");
 };
+app.post("/login", login.myLogin);
+
+app.get("/", checkUser, function(req, res) {
+  res.render("home", {
+    employee: req.session.employee,
+    is_admin: req.session.user.is_admin
+  })
+});
+
 app.get("/logout", function(req, res) {
   delete req.sess;
   res.redirect("/login");
@@ -85,16 +91,18 @@ function errorHandler(err, req, res, next) {
 
 
 
-app.post("/login", login.myLogin);
+
 app.get('/signup/addUser', signup.showSignup);
 app.post('/signup/addUser', signup.add);
-app.get('/questionnare', questionnare.display, middleware.requiresLogin);
-app.post('/questionnare/createQuestions',questionnare.createQuestions,middleware.requiresLogin);
-app.get('/answers', answers.show,middleware.requiresLogin);
-app.post('/answers/update/:answers_id', answers.update,middleware.requiresLogin);
-app.get('/record', record.showAllRecords,middleware.requiresLogin);
-app.get('/record',record.showRecord,middleware.requiresLogin);
-app.post('/answers/add', answers.add,middleware.requiresLogin);
+app.get('/questionnare',questionnare.display);
+app.post('/questionnare/createQuestions',questionnare.createQuestions);
+app.get('/answers', answers.show);
+app.post('/answers/update/:answers_id', answers.update);
+app.get('/record', record.showAllRecords);
+app.get('/record',record.showRecord);
+app.get('/record/edit/answers_id',record.getRecord);
+app.post('/record/update/answers_id',record.updateRecord);
+app.post('/answers/add', answers.add);
 
 
 var portNumber = process.env.PORT_NR || 5000;
