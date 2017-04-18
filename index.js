@@ -97,7 +97,6 @@ app.post('/signup/addUser', signup.add);
 app.get('/questionnare',questionnare.display);
 app.post('/questionnare/createQuestions',questionnare.createQuestions);
 app.get('/answers', answers.show);
-app.post('/answers/update/:answers_id', answers.update);
 app.get('/record', record.showAllRecords);
 app.get('/record',record.showRecord);
 app.get('/record/edit/answers_id',record.getRecord);
