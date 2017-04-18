@@ -1,4 +1,3 @@
-var bcrypt = require('bcrypt');
 exports.showSignup = function(req, res) {
   res.render('signup');
 }
