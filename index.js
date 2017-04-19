@@ -10,10 +10,10 @@ var express = require('express'),
   flash = require('express-flash'),
   record = require('./routes/record'),
   middleware = require('./middlewares/server'),
-  sendMail = require('./routes/sendMail'),
   login = require('./routes/login'),
-  cookieParser = require('cookie-parser')
-  hbs = require('nodemailer-express-handlebars');
+  nodemailer = require('nodemailer'),
+  hbs = require('nodemailer-express-handlebars'),
+  cookieParser = require('cookie-parser');
 
 var app = express();
 var dbOptions = {
@@ -52,6 +52,40 @@ app.use(bodyParser.urlencoded({
   }))
   // parse application/json
 app.use(bodyParser.json());
+
+var mailer = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'zimkhitha@projectcodex.co',
+    password: 'Zimmat321'
+  }
+});
+
+mailer.use('compile',hbs({
+  viewPath: 'views',
+  extName: '.handlebars'
+}))
+
+app.get('/', function(req, res, next) {
+    res.render('/questionnare');
+})
+
+app.get('/sendEmail', function(req, res, next) {
+  mailer.sendMail({
+    from:'zimkhitha@projectcodex.co',
+    to:'zimmatshangaza@gmail.com',
+    subject:'Questionnare',
+    template:'email',
+    function(err,res){
+    if(err){
+      res.send("bad email");
+    }
+    res.send("good email");
+  }
+});
+});
 
 app.get("/signup", middleware.loggedOut, function(req, res, next) {
   res.render("signup");
