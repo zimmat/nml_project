@@ -24,12 +24,12 @@
 
         <li><a href="/record">Records</a></li>
         <li><a href="/questionnare">Questions</a></li>
-          <li><a href="/answers">Answers</a></li>
+        <li><a href="/answers">Answers</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {{#if sess}}
-          <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> logout</a></li>
+        {{#if currentUser}}
+          <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> {{currentUser.name}} logout</a></li>
           {{else}}
           <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> SignIn</a></li>

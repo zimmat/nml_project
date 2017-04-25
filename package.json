@@ -17,6 +17,7 @@
     "express-myconnection": "^1.0.4",
     "express-session": "^1.15.2",
     "flash": "^1.1.0",
+    "gmail-send": "^1.2.8",
     "handlebars": "^4.0.6",
     "mysql": "^2.13.0",
     "nodemailer": "^4.0.0",
