@@ -19,7 +19,7 @@ exports.add = function(req, res, next) {
             answer: req.body.answer
         };
         connection.query('insert into answers set?', data, function(err, results) {
-          console.log(results);
+          // console.log(results);
             if (err) return next(err);
             res.redirect('/record');
         });

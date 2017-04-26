@@ -4,13 +4,14 @@
   </div>
 
   <p id='warning'>{{messages.message}}</p>
-
+{{#if is_admin}}
   <form class="" action="/questionnare/createQuestions" method="post">
     <div class="questions">
     Insert course: <input type="text" name="question"><br>
    <input type="submit"><br>
      </div>
   </form>
+  {{else}}
   <form action="/answers/add" method="POST">
   <div class="questionnare">
       <p>Would you like to go to any of the listed courses, answer with yes to those you interested in, no if you not and leave null if undecided</p>
@@ -21,3 +22,4 @@
    <input type="submit"><br>
   </div>
 </form>
+{{/if}}
