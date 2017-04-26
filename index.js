@@ -18,8 +18,9 @@ var express = require('express'),
 var app = express();
 var dbOptions = {
     host: 'localhost',
-    user: 'root',
-    password: 'p@$$w0rd',
+    user: 'nml',
+    port: 3306,
+    password: 'nml177',
     database: 'nmldb'
 }
 
