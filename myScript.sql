@@ -15,7 +15,6 @@ question VARCHAR(100));
 
 CREATE TABLE employees (employee_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(20),
-surname VARCHAR(20),
 password VARCHAR(100),
 confirmPassword VARCHAR(100),
 email VARCHAR(100),

@@ -6,8 +6,8 @@ Staff member can answer with yes, no or leave null if undecided, the staff membe
 
 # Technplogies
 
-*ExpressJS
-*nodemailer-express-handlebars
-*mysql
-*NodeJs
-*handlebars
+- ExpressJS
+- nodemailer-express-handlebars
+- Mysql
+- NodeJs
+- handlebars

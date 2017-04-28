@@ -147,9 +147,8 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-app.get('/signup/addUser', signup.showSignup);
+app.post('/signup/add', signup.add);
 app.get('/employees', employees.getAllEmployees);
-app.post('/signup/addUser', signup.add);
 app.get('/questionnare', questionnare.display);
 app.post('/questionnare/createQuestions', questionnare.createQuestions);
 app.get('/answers', answers.show);
