@@ -17,7 +17,6 @@ exports.add = function(req, res, next) {
         if (err) return next(err);
         var data = {
             answer: req.body.answer,
-            question: req.body.question
         };
         connection.query('insert into answers set?', data, function(err, results) {
           // console.log(results);

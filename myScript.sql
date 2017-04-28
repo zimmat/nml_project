@@ -18,10 +18,10 @@ name VARCHAR(20),
 password VARCHAR(100),
 email VARCHAR(100),
 PRIMARY KEY (employee_id)
-question_id int,foreign key (question_id) references questionnare(question_id));
+);
 
 CREATE TABLE answers (answers_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-question VARCHAR(100),
+answer VARCHAR(100),
 question_id int,foreign key (question_id) references questionnare(question_id),
 employee_id int,foreign key (employee_id) references employees(employee_id)
 );

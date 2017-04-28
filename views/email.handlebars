@@ -1,6 +1,8 @@
 <div style="border: 1px solid #999; width: 330px; height: 350px; border-radius: 10px; padding-top: 0px">
   <h1 style="background: #2196F3; color: white; width: 300px; padding: 15px;">Questionnare</h1>
-  <p style="font-size: 20px;font-family: ariel;">Hi employee</p>
+  {{#employees}}
+  <p style="font-size: 20px;font-family: ariel;">Hi {{name}}</p>
+  {{/employees}}
   <p style="font-size:20px; height: 100px">Would you like to attend this course</p>
   <button style="width: 300px;
   padding: 10px;

@@ -3,9 +3,7 @@ exports.createQuestions = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     var data = {
-      question: req.body.question,
-      is_admin: req.session.employee.is_admin,
-      employee: req.session.employee.employee
+      question: req.body.question
     };
       connection.query('insert into questionnare set ?', data, function(err, results) {
         if (err) return next(err)

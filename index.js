@@ -149,7 +149,7 @@ function errorHandler(err, req, res, next) {
 }
 
 app.post('/signup', signup.add);
-app.get('/employees', employees.getAllEmployees);
+app.get('/email', employees.getAllEmployees);
 app.get('/questionnare', questionnare.display);
 app.post('/questionnare/createQuestions', questionnare.createQuestions);
 app.get('/answers', answers.show);
