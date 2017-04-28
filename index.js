@@ -17,6 +17,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser');
 
 var app = express();
+
 var dbOptions = {
     host: 'localhost',
     user: 'nml',
@@ -147,7 +148,7 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-app.post('/signup/add', signup.add);
+app.post('/signup', signup.add);
 app.get('/employees', employees.getAllEmployees);
 app.get('/questionnare', questionnare.display);
 app.post('/questionnare/createQuestions', questionnare.createQuestions);
