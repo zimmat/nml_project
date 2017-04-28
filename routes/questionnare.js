@@ -3,7 +3,9 @@ exports.createQuestions = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     var data = {
-      question: req.body.question
+      question: req.body.question,
+      is_admin: req.session.employee.is_admin,
+      employee: req.session.employee.employee
     };
       connection.query('insert into questionnare set ?', data, function(err, results) {
         if (err) return next(err)
@@ -18,7 +20,9 @@ exports.display = function(req,res,next){
       if (err) return next(err);
       res.render('questionnare',{
         no_questions: results.length ===0,
-        questions: results
+        questions: results,
+        is_admin: req.session.employee.is_admin,
+        employee: req.session.employee.employee
       });
     });
   });

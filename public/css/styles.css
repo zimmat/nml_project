@@ -116,20 +116,6 @@ input[type="submit"] {
   border-bottom-left-radius:5px;
   box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-button #email_link {
-      width: 300px;
-      padding: 20px;
-      cursor: pointer;
-      box-shadow: 6px 6px 5px;
-      -moz-box-shadow: 6px 6px 5px #999;
-      font-weight: bold;
-      background: #668cff;
-      color: #668cff;
-      border-radius: 10px;
-      border: 1px solid #999;
-      font-size: 150%;
-      text-decoration: none;
-}
 .register {
   background: #eceeee;
   border: 1px solid #42464b;

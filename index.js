@@ -7,6 +7,7 @@ var express = require('express'),
     questionnare = require('./routes/questionnare'),
     answers = require('./routes/answers'),
     signup = require('./routes/signup'),
+    employees = require('./routes/employees'),
     flash = require('express-flash'),
     record = require('./routes/record'),
     middleware = require('./middlewares/server'),
@@ -32,25 +33,21 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 app.use(flash());
 
-//setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 
 app.use(cookieParser());
-
 app.use(session({
     secret: 'keyboard cat',
     cookie: {
-        maxAge: 60000 * 30 // expire after 30 minutes
+        maxAge: 60000 * 30
     }
 }));
-//make employee id available in templates
 app.use(function(req, res, next) {
+    if (!req.session.employee &&
+        req.path !== '/login' &&
+        req.path !== '/signup') {
 
-    if (!req.session.employee
-        && req.path !== '/login'
-        && req.path !== '/signup'){
-
-      return res.redirect('/login');
+        return res.redirect('/login');
     }
 
     next();
@@ -58,8 +55,8 @@ app.use(function(req, res, next) {
 
 app.use(function(req, res, next) {
 
-    if (req.session.employee){
-      res.locals.currentUser = req.session.employee;
+    if (req.session.employee) {
+        res.locals.currentUser = req.session.employee;
     }
 
     //console.log(req.locals);
@@ -112,7 +109,6 @@ app.get('/sendEmail', function(req, res, next) {
                     subject: 'Questionnare',
                     template: 'email',
                 }, function(err, emailResponse) {
-                    console.log(emailResponse);
                     if (err) {
                         res.send("bad email");
                     }
@@ -125,32 +121,25 @@ app.get('/sendEmail', function(req, res, next) {
         });
     });
 });
-
 app.get("/signup", middleware.loggedOut, function(req, res, next) {
     res.render("signup");
 });
-
 app.get("/login", middleware.loggedOut, function(req, res) {
     res.render("login", {
         showNavBar: false
     });
 });
-
 app.post("/login", login.myLogin);
-
 app.get("/", function(req, res) {
     res.render("home", {
         employee: req.session.employee,
         is_admin: req.session.user.is_admin
     })
 });
-
 app.get("/logout", function(req, res) {
     delete req.session.employee;
     res.redirect("/login");
 })
-
-
 function errorHandler(err, req, res, next) {
     res.status(500);
     res.render('error', {
@@ -158,10 +147,8 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-
-
-
 app.get('/signup/addUser', signup.showSignup);
+app.get('/employees', employees.getAllEmployees);
 app.post('/signup/addUser', signup.add);
 app.get('/questionnare', questionnare.display);
 app.post('/questionnare/createQuestions', questionnare.createQuestions);
@@ -174,7 +161,6 @@ app.post('/answers/add', answers.add);
 
 
 var portNumber = process.env.PORT_NR || 5000;
-
 app.listen(portNumber, function() {
     console.log('App running on:', portNumber);
 });

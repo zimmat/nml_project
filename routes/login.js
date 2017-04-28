@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 var rolesMap = {
     "Zee": "Viewer",
-    "Zimkhitha": "admin"
+    "Naomi": "admin"
 };
 var sess;
 exports.myLogin = function(req, res, next) {
@@ -27,17 +27,10 @@ exports.myLogin = function(req, res, next) {
                             // console.log(currentEmployee);
 
                             if (employee.password === currentEmployee.password) {
-                             var getRole = function(rolesMap){
-                                if(rolesMap[req.body.name] === "admin"){
-                                  return is_admin
-                                }else{
-                                  return employee
-                                }
-                                  }
                                 req.session.employee = {
                                     name: req.body.name,
-                                    password: req.body.password,
-                                    role: getRole(rolesMap)
+                                    is_admin: rolesMap[req.body.name] === "admin",
+                                    employee: rolesMap[req.body.name] === "Viewer"
                                 }
                                 console.log(req.session.employee);
                                 res.redirect("/questionnare");
