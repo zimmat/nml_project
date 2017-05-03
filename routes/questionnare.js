@@ -18,10 +18,11 @@ exports.display = function(req,res,next){
       if (err) return next(err);
       res.render('questionnare',{
         no_questions: results.length ===0,
-        questions: results,
+        question: results[0],
         is_admin: req.session.employee.is_admin,
-        employee: req.session.employee.employee
+        employee: req.session.employee
       });
+
     });
   });
 }

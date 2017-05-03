@@ -30,9 +30,10 @@ exports.myLogin = function(req, res, next) {
                                 req.session.employee = {
                                     name: req.body.name,
                                     is_admin: rolesMap[req.body.name] === "admin",
-                                    employee: rolesMap[req.body.name] === "Viewer"
+                                    employee: rolesMap[req.body.name] === "Viewer",
+                                    employee_id : currentEmployee.employee_id
                                 }
-                                console.log(req.session.employee);
+                          
                                 res.redirect("/questionnare");
                               }else {
                                     req.flash("warning", "incorrect password");

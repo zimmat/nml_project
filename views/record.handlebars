@@ -20,12 +20,12 @@
 </table>
 {{else}}
 <h2>My Record</h2>
-<a href="/answer/edit/{{answers_id}}">edit</a>
 <table class="table table-hover table-bordered results">
   <thead>
     <tr>
       <th class="col-md-3 col-xs-3">Question</th>
       <th class="col-md-3 col-xs-3">Answer</th>
+        <th class="col-md-3 col-xs-3">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +33,7 @@
     <tr>
       <td>{{question}}</td>
       <td>{{answer}}</td>
+      <a href="/answer/edit/{{answers_id}}">edit</a>
     </tr>
       {{/record}}
   </tbody>

@@ -13,11 +13,17 @@
   </form>
   {{else}}
   <form action="/answers/add" method="POST">
+      <input type="hidden" name="employee_id" value="{{employee.employee_id}}">
+      <input type="hidden" name="question_id" value="{{question.question_id}}">
   <div class="questionnare">
       <p>Would you like to go to any of the listed courses, answer with yes to those you interested in, no if you not and leave null if undecided</p>
-    {{#questions}}
-    <div>{{question}}:<input type="text" name="answer"></div>
-    {{/questions}}
+{{#question}}
+    <div>{{question}}:<select name="answer">
+  <option value="Nes">Yes</option>
+  <option value="No">No</option>
+  <option value="Null">NULL</option>
+</select></div>
+    {{/question}}
     <br>
    <input type="submit"><br>
   </div>

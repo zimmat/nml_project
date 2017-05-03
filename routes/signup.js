@@ -7,7 +7,6 @@ exports.add = function(req, res, next) {
             password: req.body.password,
         };
         var confirmPassword = req.body.confirmPassword;
-        console.log(data.password +"successfuly confirmed "+ confirmPassword);
         if (data.password !== confirmPassword) {
           req.flash("warning","passwords do not match");
             res.redirect('/signup');
