@@ -14,8 +14,10 @@ exports.createQuestions = function(req, res, next) {
 exports.display = function(req,res,next){
   req.getConnection(function(err,connection){
     if (err) return next(err);
+
     connection.query('SELECT * FROM questionnare ORDER BY question_id DESC LIMIT 1',[], function(err,results){
       if (err) return next(err);
+      // console.log(results);
       res.render('questionnare',{
         no_questions: results.length ===0,
         question: results[0],

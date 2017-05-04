@@ -10,6 +10,7 @@ var express = require('express'),
     employees = require('./routes/employees'),
     flash = require('express-flash'),
     record = require('./routes/record'),
+    records = require('./routes/records'),
     middleware = require('./middlewares/server'),
     login = require('./routes/login'),
     nodemailer = require('nodemailer'),
@@ -114,7 +115,7 @@ app.get('/sendEmail', function(req, res, next) {
                         res.send("bad email");
                     }
                     req.flash("message", "email sent");
-                    return res.redirect("/");
+                    return res.redirect("/records");
 
                 });
 
@@ -149,15 +150,15 @@ function errorHandler(err, req, res, next) {
 }
 
 app.post('/signup', signup.add);
-app.get('/em', employees.getAllEmployees);
-app.get('/questionnare', questionnare.display);
-app.post('/questionnare/createQuestions', questionnare.createQuestions);
-app.get('/answers', answers.show);
-app.get('/record', record.showAllRecords);
-app.get('/record', record.showRecord);
-app.get('/record/edit/answers_id', record.getRecord);
-app.post('/record/update/answers_id', record.updateRecord);
-app.post('/answers/add', answers.add);
+app.get('/employees',middleware.requiresLoginAsAdmin, employees.getAllEmployees);
+app.get('/questionnare',middleware.requiresLogin, questionnare.display);
+app.post('/questionnare/createQuestions',middleware.requiresLoginAsAdmin, questionnare.createQuestions);
+app.get('/answers',middleware.requiresLoginAsAdmin, answers.show);
+app.get('/records',middleware.requiresLoginAsAdmin, records.showAllRecords);
+app.get('/record',middleware.requiresLogin, record.showRecord);
+app.get('/answers/edit/:answers_id',middleware.requiresLogin, record.getRecord);
+app.post('/answers/update/:answers_id',middleware.requiresLogin, record.updateRecord);
+app.post('/answers/add', middleware.requiresLogin, answers.add);
 
 
 var portNumber = process.env.PORT_NR || 5000;

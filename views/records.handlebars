@@ -1,25 +1,21 @@
-
-{{#if employee}}
-<h2>My Record</h2>
+{{#if is_admin}}
+<h2>Records</h2>
 <table class="table table-hover table-bordered results">
   <thead>
     <tr>
-
+      <th class="col-md-1 col-xs-1">Name</th>
       <th class="col-md-3 col-xs-3">Question</th>
-      <th class="col-md-3 col-xs-3">Answer's Id</th>
       <th class="col-md-3 col-xs-3">Answer</th>
-        <th class="col-md-3 col-xs-3">Edit</th>
     </tr>
   </thead>
   <tbody>
-      {{#record}}
+      {{#records}}
     <tr>
+      <td>{{name}}</td>
       <td>{{question}}</td>
-      <td>{{answers_id}}</td>
       <td>{{answer}}</td>
-      <td><a href="/answers/edit/{{answers_id}}">edit</a></td>
     </tr>
-      {{/record}}
+      {{/records}}
   </tbody>
 </table>
 {{/if}}

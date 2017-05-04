@@ -5,7 +5,7 @@ exports.getAllEmployees = function(req,res,next){
     if (err) return next(err);
     connection.query('SELECT *  FROM employees',[], function(err,results){
       if (err) return next(err);
-      res.render('/employees',{
+      res.render('employees',{
         employees: results
       });
     });

@@ -23,10 +23,13 @@
       </div>
       <ul class="nav navbar-nav">
         <!-- <li><a href="/">Home</a></li> -->
-
-        <li><a href="/record">Records</a></li>
-        <li><a href="/questionnare">Questions</a></li>
+        {{#if is_admin}}
+        <li><a href="/records">Records</a></li>
         <li><a href="/employees">Employees</a></li>
+        {{else}}
+        <li><a href="/record">My Record</a></li>
+        {{/if}}
+        <li><a href="/questionnare">Questions</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">

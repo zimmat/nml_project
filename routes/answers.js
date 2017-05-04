@@ -21,7 +21,6 @@ exports.add = function(req, res, next) {
             employee_id: req.body.employee_id
         };
         connection.query('insert into answers set?', data, function(err, results) {
-          // console.log(results);
             if (err) return next(err);
             res.redirect('/record');
         });
